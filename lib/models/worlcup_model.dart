@@ -13,13 +13,12 @@ class WorldCup {
     required this.voteCount,
   });
 
-  factory WorldCup.fromJson(Map<String, dynamic> json) {
+  /*factory WorldCup.fromJson(Map<String, dynamic> json) {
     return WorldCup(
       id: json['id'],
       team: json['team'],
       group: json['group'],
       flagImageion: json['flagImageion'],
-      voteCount: json['voteCount'],
-    );
-  }
+      vote
+  }*/
 }

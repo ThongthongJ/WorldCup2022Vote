@@ -2,10 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:worldcup2022vote/widget/worldcup_card.dart';
+
 import 'package:http/http.dart' as http;
 import '../models/worlcup_model.dart';
-import '../service/api.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,8 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<WorldCup> _teamList = [];
-  String _errMessage = '';
-  bool _isLoading = false;
 
   @override
   void initState() {
@@ -49,7 +46,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _isLoading = true;
     });
-    var data = await http.get(Uri.parse("http://103.74.252.66:8888/"));
+    var data = await http.get(Uri.parse("http://103.74.252.66:8888"));
     var jsonBody = json.decode(data.body)['data'];
     //var jsonData = jsonBody['data'];
     // print(jsonBody);
@@ -86,7 +83,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
                 itemBuilder: (context, index) {
-                  Card(
+                  return Card(
                     child: Row(
                       children: [
                         Icon(Icons.person),
