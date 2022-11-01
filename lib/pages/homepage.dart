@@ -71,22 +71,40 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: [
-          Card(
-            child: Image.asset('assets/images/logo.png'),
-          ),
-          Card(
-            child: Row(
-              children: [
-                Icon(Icons.person),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text('Team'), Text('Group')],
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Card(
+                child: Image.asset(
+                  'assets/images/logo.jpg',
+                  scale: 6.0,
                 ),
-                TextButton(onPressed: () {}, child: Text('Vote'))
-              ],
-            ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.builder(
+                itemBuilder: (context, index) {
+                  Card(
+                    child: Row(
+                      children: [
+                        Icon(Icons.person),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Team : ${_teamList[index].team}'),
+                              Text('Group : ${_teamList[index].group}'),
+                            ],
+                          ),
+                        ),
+                        TextButton(onPressed: () {}, child: Text('Vote'))
+                      ],
+                    ),
+                  );
+                },
+                itemCount: _teamList.length),
           )
         ],
       ),
