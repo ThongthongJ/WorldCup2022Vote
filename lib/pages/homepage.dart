@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
 
   void _fetchWorldCupData() async {
     setState(() {
-      _isLoading = true;
+      //_isLoading = true;
     });
     var data = await http.get(Uri.parse("http://103.74.252.66:8888"));
     var jsonBody = json.decode(data.body)['data'];
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
           voteCount: jsonBody[j]['voteCount']));
     }
     setState(() {
-      _isLoading = false;
+     // _isLoading = false;
     });
   }
 
